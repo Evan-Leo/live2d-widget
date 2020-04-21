@@ -38,7 +38,7 @@ function loadWidget(config) {
 	let userAction = false,
 		userActionTimer,
 		messageTimer,
-		messageArray = ["好久不见，日子过得好快呢……", "大坏蛋！你都多久没理人家了呀，嘤嘤嘤～", "嗨～快来逗我玩吧！", "拿小拳拳锤你胸口！", "记得把小家加入 Adblock 白名单哦！"];
+		messageArray = ["好久不见，日子过得好快呢……", "请少主多陪陪我吧，我一个人好无聊的"];
 	window.addEventListener("mousemove", () => userAction = true);
 	window.addEventListener("keydown", () => userAction = true);
 	setInterval(() => {
@@ -73,7 +73,7 @@ function loadWidget(config) {
 			Live2D.captureFrame = true;
 		});
 		document.querySelector("#waifu-tool .fa-info-circle").addEventListener("click", () => {
-			open("https://github.com/stevenjoezhang/live2d-widget");
+			open("about.html");
 		});
 		document.querySelector("#waifu-tool .fa-times").addEventListener("click", () => {
 			localStorage.setItem("waifu-display", Date.now());
@@ -108,7 +108,7 @@ function loadWidget(config) {
 			else if (now > 17 && now <= 19) text = "傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红～";
 			else if (now > 19 && now <= 21) text = "晚上好，今天过得怎么样？";
 			else if (now > 21 && now <= 23) text = ["已经这么晚了呀，早点休息吧，晚安～", "深夜时要爱护眼睛呀！"];
-			else text = "你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？";
+			else text = "你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？小心禾几哦";
 		} else if (document.referrer !== "") {
 			let referrer = new URL(document.referrer),
 				domain = referrer.hostname.split(".")[1];
@@ -159,7 +159,7 @@ function loadWidget(config) {
 		if (modelId === null) {
 			// 首次访问加载 指定模型 的 指定材质
 			modelId = 1; // 模型 ID
-			modelTexturesId = 53; // 材质 ID
+			modelTexturesId = 1; // 材质 ID
 		}
 		loadModel(modelId, modelTexturesId);
 		fetch(waifuPath)
@@ -260,7 +260,7 @@ function initWidget(config, apiPath = "/") {
 		};
 	}
 	document.body.insertAdjacentHTML("beforeend", `<div id="waifu-toggle">
-			<span>看板娘</span>
+			<span>看板</span>
 		</div>`);
 	let toggle = document.getElementById("waifu-toggle");
 	toggle.addEventListener("click", () => {
